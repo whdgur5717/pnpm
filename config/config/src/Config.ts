@@ -10,6 +10,7 @@ import {
 } from '@pnpm/types'
 import type { Hooks } from '@pnpm/pnpmfile'
 import { type OptionsFromRootManifest } from './getOptionsFromRootManifest.js'
+import { type AuthInfo } from './parseAuthInfo.js'
 
 export type UniversalOptions = Pick<Config, 'color' | 'dir' | 'rawConfig' | 'rawLocalConfig'>
 
@@ -193,7 +194,9 @@ export interface Config extends OptionsFromRootManifest {
   blockExoticSubdeps?: boolean
 
   registries: Registries
+  authInfos: Record<string, AuthInfo>
   sslConfigs: Record<string, SslConfig>
+  defaultAuthInfo?: AuthInfo
   ignoreWorkspaceRootCheck: boolean
   workspaceRoot: boolean
 
